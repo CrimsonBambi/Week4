@@ -18,7 +18,7 @@ const MediaRow = (props) => {
 };
 
 MediaRow.propTypes = {
-  item: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default MediaRow
