@@ -1,4 +1,4 @@
-
+import MediaRow from "./MediaRow";
 const mediaArray = [
   {
     media_id: 8,
