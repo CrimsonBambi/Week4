@@ -1,21 +1,24 @@
-/*import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'*/
-import './App.css'
-import Greeting from './Greeting';
-import Home from './components/Home';
-
-//const [count, setCount] = useState(0) // defaultti arvo setcount päivittää countin
+import {BrowserRouter, Route, Routes} from 'react-router';
+import './App.css';
+import Home from './views/Home';
+import Layout from './components/Layout';
+import Profile from './views/Profile';
+import Upload from './views/Upload';
+import Single from './views/Single';
 
 function App() {
   return (
-    <> // react fragment
-      <Greeting name={123} />
-      <h1>My App</h1>
-      <Greeting name='Gerli'/>
-      <Home/>
-    </>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/single" element={<Single />} />
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
