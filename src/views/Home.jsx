@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import MediaRow from "../components/MediaRow";
 import SingleView from "../components/SingleView";
@@ -42,6 +43,47 @@ const mediaArray = [
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   console.log('selectedItem', selectedItem);
+=======
+import {useEffect, useState} from 'react';
+
+import MediaRow from '../components/MediaRow'; //../components/MediaRow
+import SingleView from '../components/SingleView';
+import {fetchData} from '../utils/fetchData';
+
+const Home = () => {
+  const [mediaArray, setMediaArray] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  console.log('selectedItem', selectedItem);
+
+  const getMedia = async () => {
+    try {
+      const mediaData = await fetchData(
+        import.meta.env.VITE_MEDIA_API + '/media',
+      );
+
+      const authApiUrl = import.meta.env.VITE_AUTH_API;
+      const newData = await Promise.all(
+        mediaData.map(async (item) => {
+          const data = await fetchData(`${authApiUrl}/users/${item.user_id}`);
+
+          return {...item, username: data.username};
+        }),
+      );
+      console.log('newData', newData);
+
+      setMediaArray(newData);
+    } catch (error) {
+      console.error('error', error);
+    }
+  };
+
+  useEffect(() => {
+    getMedia();
+  }, []);
+
+  console.log('mediaArray', mediaArray);
+
+>>>>>>> hooks
   return (
     <>
       <h2>My Media</h2>
@@ -51,6 +93,10 @@ const Home = () => {
             <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>
+<<<<<<< HEAD
+=======
+            <th>Owner</th>
+>>>>>>> hooks
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
@@ -59,8 +105,16 @@ const Home = () => {
         </thead>
         <tbody>
           {mediaArray.map((item) => (
+<<<<<<< HEAD
             <MediaRow key={item.media_id} item={item}
             setSelectedItem={setSelectedItem} />
+=======
+            <MediaRow
+              key={item.media_id}
+              item={item}
+              setSelectedItem={setSelectedItem}
+            />
+>>>>>>> hooks
           ))}
         </tbody>
       </table>
@@ -68,5 +122,8 @@ const Home = () => {
     </>
   );
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> hooks
 export default Home;
