@@ -4,7 +4,9 @@
 
 # React + Vite
 
-Open [this link](http://users.metropolia.fi/~gerlih/hooks) to view it in the browser.
+Open [this link](https://users.metropolia.fi/~gerlih/routing/) to view rooting exercise in the browser.
+
+Open [this link](https://users.metropolia.fi/~gerlih/hooks_dist/) to view hooks exercise in the browser.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
