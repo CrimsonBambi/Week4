@@ -1,9 +1,8 @@
 import {BrowserRouter, Route, Routes} from 'react-router';
-import './App.css';
-import Home from './views/Home';
 import Layout from './components/Layout';
-import Profile from './views/Profile';
+import Home from './views/Home';
 import Upload from './views/Upload';
+import Profile from './views/Profile';
 import Single from './views/Single';
 
 function App() {
